@@ -1,5 +1,6 @@
 name: movitter
-
+repository: https://github.com/wendellrocha/movitter
+sdkPath: .fvm/flutter_sdk
 packages:
   - packages/**
 
@@ -11,6 +12,8 @@ command:
     linkToCommits: true
     # Additionally build a changelog at the root of the workspace.
     workspaceChangelog: true
+    # Prevents melos version from being used inside branches other than the one specified.
+    branch: main
   bootstrap:
     # It seems so that running "pub get" in parallel has some issues (like
     # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
@@ -51,10 +54,15 @@ scripts:
       melos bootstrap && \
       melos run lint:all
     description: Run all targets generally expected in CI for a full local quality check.
+
+  get:
+    run: fvm flutter pub get
+    description: Run flutter pub get for main app.
+
+  clean:
+    run: fvm flutter clean
+    description: Run flutter clean for main app.
     
   # Additional cleanup lifecycle script, executed when `melos clean` is run.
-  postclean: >
-    melos exec -c 6 -- "flutter clean"
-  
-  postbootstrap: >
-    melos exec -- "flutter pub get"
+  postclean: melos exec -c 1 -- "flutter clean" && melos run clean
+  postbootstrap: melos run get

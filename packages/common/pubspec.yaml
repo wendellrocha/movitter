@@ -2,6 +2,7 @@ name: common
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
+repository: https://github.com/wendellrocha/movitter/tree/main/packages/common
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
