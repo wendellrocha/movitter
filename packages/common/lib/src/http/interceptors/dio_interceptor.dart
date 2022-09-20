@@ -34,7 +34,7 @@ class DioInterceptor extends Interceptor {
         );
       default:
         throw HttpError(
-          message: data['message'],
+          message: data['status_message'],
           statusCode: err.response?.statusCode,
           requestOptions: err.requestOptions,
         );

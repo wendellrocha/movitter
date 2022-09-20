@@ -6,4 +6,6 @@ class HomeController {
   HomeController(this._store);
 
   HomeStore get store => _store;
+
+  void getPopularMovies({int page = 1}) => _store.getPopularMovies(page: page);
 }
