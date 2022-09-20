@@ -7,11 +7,13 @@ class BottomNavigationBarWidget extends StatefulWidget {
   final MenuItems items;
   final int currentIndex;
   final Function(int) onTap;
+  final bool hasFAB;
   const BottomNavigationBarWidget({
     Key? key,
     required this.items,
     this.currentIndex = 0,
     required this.onTap,
+    this.hasFAB = false,
   })  : assert(currentIndex >= 0, 'Invalid index'),
         super(key: key);
 
@@ -75,7 +77,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         ),
       );
 
-      if (i == itemCount - 1) {
+      if (widget.hasFAB && i == itemCount - 1) {
         // Adiciona um gap entre o fab e os itens
         items.add(const SizedBox(width: 72));
       }

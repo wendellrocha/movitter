@@ -21,6 +21,6 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ModuleRoute('/', module: SplashModule()),
-    ModuleRoute('/home', module: HomeModule()),
+    ModuleRoute('/movies', module: MoviesModule()),
   ];
 }

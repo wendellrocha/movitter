@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'theme/theme_light.dart';
+
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
 
@@ -13,7 +15,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Movitter',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: LightTheme().themeData,
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
     );

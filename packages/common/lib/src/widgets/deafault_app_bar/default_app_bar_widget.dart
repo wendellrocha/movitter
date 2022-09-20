@@ -1,7 +1,7 @@
 import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
 
-class DefaaultAppBarWidget extends StatefulWidget
+class DefaultAppBarWidget extends StatefulWidget
     implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
@@ -10,7 +10,8 @@ class DefaaultAppBarWidget extends StatefulWidget
   final VoidCallback? callbackButton;
   final Color? backgroundColor;
   final Color? titleColor;
-  const DefaaultAppBarWidget({
+
+  const DefaultAppBarWidget({
     Key? key,
     required this.title,
     this.actions,
@@ -25,10 +26,10 @@ class DefaaultAppBarWidget extends StatefulWidget
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
-  State<DefaaultAppBarWidget> createState() => _DefaaultAAppBarWidgetState();
+  State<DefaultAppBarWidget> createState() => _DefaultAppBarWidgetState();
 }
 
-class _DefaaultAAppBarWidgetState extends State<DefaaultAppBarWidget> {
+class _DefaultAppBarWidgetState extends State<DefaultAppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AppBar(

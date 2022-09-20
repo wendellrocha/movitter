@@ -50,8 +50,9 @@ scripts:
     run: git clean -x -d -f -q
     description: Clean things very deeply, can be used to establish "pristine checkout" status.
 
-  test:
-    run: echo "test ${TMDB_API_KEY}"
+  config:launch:
+    run: dart run scripts/config_launch.dart
+    description: Inject environment variables in launch.json
 
   qualitycheck:
     run: |

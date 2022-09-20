@@ -26,9 +26,7 @@ class PopularMoviesRepositoryImpl implements IPopularMoviesRepository {
           message: e.message!,
         ),
       );
-    } catch (e, stacktrace) {
-      print(e);
-      print(stacktrace);
+    } catch (e) {
       return Left(PopularMoviesDatasourceError(message: e.toString()));
     }
   }

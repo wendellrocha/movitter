@@ -1,15 +1,15 @@
-import 'package:dependencies/dependencies.dart';
+import 'package:flutter_triple/flutter_triple.dart';
 
 import 'domain/entities/result_popular_movies.dart';
 import 'domain/errors/errors.dart';
 import 'domain/repositories/popular_movies_repository.dart';
 import 'infra/models/popular_movies_model.dart';
 
-class HomeStore
+class PopularStore
     extends NotifierStore<FailurePopularMovies, ResultPopularMovies> {
   final IPopularMoviesRepository _repository;
 
-  HomeStore(this._repository)
+  PopularStore(this._repository)
       : super(
           const ResultPopularMoviesModel(
             page: 1,

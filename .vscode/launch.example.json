@@ -5,6 +5,7 @@
       "name": "movitter",
       "request": "launch",
       "type": "dart",
+      "program": "${workspaceFolder}/lib/main.dart",
       "args": ["--dart-define", "TMDB_API_KEY={{TMDB_API_KEY}}"]
     },
     {
@@ -12,6 +13,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
+      "program": "${workspaceFolder}/lib/main.dart",
       "args": ["--dart-define", "TMDB_API_KEY={{TMDB_API_KEY}}"]
     },
     {
@@ -19,6 +21,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
+      "program": "${workspaceFolder}/lib/main.dart",
       "args": ["--dart-define", "TMDB_API_KEY={{TMDB_API_KEY}}"]
     }
   ]
