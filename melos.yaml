@@ -47,6 +47,9 @@ scripts:
     run: git clean -x -d -f -q
     description: Clean things very deeply, can be used to establish "pristine checkout" status.
 
+  test:
+    run: echo "test ${TMDB_API_KEY}"
+
   qualitycheck:
     run: |
       melos run clean:deep && \
@@ -63,6 +66,10 @@ scripts:
     run: fvm flutter clean
     description: Run flutter clean for main app.
     
+  load:env:
+    run: dart run scripts/environment_config.dart
+    description: just loads .env values
+
   # Additional cleanup lifecycle script, executed when `melos clean` is run.
   postclean: melos exec -c 1 -- "flutter clean" && melos run clean
   postbootstrap: melos run get
