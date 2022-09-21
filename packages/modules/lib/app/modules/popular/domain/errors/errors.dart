@@ -1,9 +1,6 @@
-abstract class FailurePopularMovies implements Exception {
-  String get message;
+import 'package:common/common.dart';
 
-  @override
-  String toString() => message;
-}
+abstract class FailurePopularMovies implements Failure {}
 
 class PopularMoviesDatasourceError implements FailurePopularMovies {
   @override

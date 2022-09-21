@@ -34,6 +34,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         color: Theme.of(context).backgroundColor,
         notchMargin: 5,
         child: SafeArea(
+          minimum: const EdgeInsets.only(top: 10),
           child: SizedBox(
             height: kBottomBarHeight,
             child: Row(
@@ -65,11 +66,27 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () => widget.onTap(i),
-                child: Icon(
-                  widget.items[i].icon,
-                  color: widget.currentIndex == i
-                      ? Theme.of(context).primaryColor
-                      : null,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      widget.items[i].icon,
+                      color: widget.currentIndex == i
+                          ? Theme.of(context).primaryColor
+                          : null,
+                    ),
+                    Text(
+                      widget.items[i].title,
+                      style: TextStyle(
+                        fontSize: 9,
+                        color: widget.currentIndex == i
+                            ? Theme.of(context).primaryColor
+                            : null,
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),

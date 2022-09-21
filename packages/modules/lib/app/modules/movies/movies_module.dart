@@ -5,11 +5,17 @@ import '../popular/popular_module.dart';
 import '../top_rated/top_rated_module.dart';
 import '../trending/trending_module.dart';
 import '../upcoming/upcoming_module.dart';
+import 'movies_controller.dart';
 import 'movies_page.dart';
 
 class MoviesModule extends Module {
   @override
-  final List<Bind> binds = [];
+  final List<Bind> binds = [
+    Bind.lazySingleton<MoviesController>(
+      (i) => MoviesController(),
+      onDispose: (controller) => controller.dispose(),
+    ),
+  ];
 
   @override
   final List<ModularRoute> routes = [

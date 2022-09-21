@@ -1,27 +1,49 @@
+import 'package:common/common.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
+import 'domain/entities/result_movies_now_playing.dart';
+import 'domain/errors/errors.dart';
+import 'now_playing_controller.dart';
 import 'now_playing_store.dart';
 
 class NowPlayingPage extends StatefulWidget {
   final String title;
-  const NowPlayingPage({Key? key, this.title = 'NowPlayingPage'})
+  const NowPlayingPage({Key? key, this.title = 'Now Playing'})
       : super(key: key);
+
   @override
   NowPlayingPageState createState() => NowPlayingPageState();
 }
 
 class NowPlayingPageState extends State<NowPlayingPage> {
-  final NowPlayingStore store = Modular.get();
+  final NowPlayingController controller = Modular.get();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getMoviesNowPlaying();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: const <Widget>[],
+      appBar: DefaultAppBarWidget(title: widget.title),
+      body: ScopedBuilder<NowPlayingStore, FailureMoviesNowPlaying,
+          ResultMoviesNowPlaying>(
+        store: controller.store,
+        onLoading: (context) => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
+        onError: (context, error) => Center(
+          child: Text(error!.message),
+        ),
+        onState: (context, state) => ListView.builder(
+          itemCount: state.moviesNowPlaying.length,
+          itemBuilder: (_, i) => Text(
+            state.moviesNowPlaying[i].title,
+          ),
+        ),
       ),
     );
   }

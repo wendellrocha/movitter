@@ -1,31 +1,26 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:common/common.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/result_popular_movies.dart';
-import 'popular_movies.dart';
 
 class ResultPopularMoviesModel extends ResultPopularMovies {
   final int page;
-  final List<PopularMovies> popularMovies;
+  final List<Movies> popularMovies;
   final int totalPages;
   final int totalResults;
 
   const ResultPopularMoviesModel({
-    required this.page,
-    required this.popularMovies,
-    required this.totalPages,
-    required this.totalResults,
-  }) : super(
-          page: page,
-          popularMovies: popularMovies,
-          totalPages: totalPages,
-          totalResults: totalResults,
-        );
+    this.page = 1,
+    this.popularMovies = const [],
+    this.totalPages = 1,
+    this.totalResults = 1,
+  });
 
   ResultPopularMoviesModel copyWith({
     int? page,
-    List<PopularMovies>? popularMovies,
+    List<Movies>? popularMovies,
     int? totalPages,
     int? totalResults,
   }) {
@@ -52,7 +47,7 @@ class ResultPopularMoviesModel extends ResultPopularMovies {
       popularMovies: map['results'] == null
           ? []
           : (map['results'] as List<dynamic>)
-              .map((e) => PopularMovies.fromJson(e))
+              .map((e) => Movies.fromJson(e))
               .toList(),
       totalPages: map['total_pages'] as int,
       totalResults: map['total_results'] as int,

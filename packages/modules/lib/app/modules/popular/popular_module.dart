@@ -10,7 +10,7 @@ import 'popular_store.dart';
 class PopularModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => PopularStore(i())),
+    TripleBind.lazySingleton((i) => PopularStore(i())),
     Bind.lazySingleton((i) => PopularController(i())),
     Bind.lazySingleton((i) => TMDBDatasource(i())),
     Bind.lazySingleton((i) => GetPopularMovies(i())),

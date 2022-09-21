@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-class PopularMovies {
+class Movies {
   final bool adult;
   final String? backdropPath;
   final List<int> genreIds;
@@ -16,7 +16,7 @@ class PopularMovies {
   final double voteAverage;
   final int voteCount;
 
-  const PopularMovies({
+  const Movies({
     required this.adult,
     this.backdropPath,
     required this.genreIds,
@@ -35,7 +35,7 @@ class PopularMovies {
 
   @override
   String toString() {
-    return 'PopularMovies(adult: $adult, backdropPath: $backdropPath,'
+    return 'Movies(adult: $adult, backdropPath: $backdropPath,'
         ' genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage,'
         ' originalTitle: $originalTitle, overview: $overview, popularity:'
         ' $popularity, posterPath: $posterPath, releaseDate: $releaseDate,'
@@ -43,11 +43,10 @@ class PopularMovies {
         ' $voteCount)';
   }
 
-  factory PopularMovies.fromJson(Map<String, dynamic> data) => PopularMovies(
+  factory Movies.fromJson(Map<String, dynamic> data) => Movies(
         adult: data['adult'] as bool,
         backdropPath: data['backdrop_path'] as String?,
-        genreIds:
-            (data['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
+        genreIds: List<int>.from(data['genre_ids']),
         id: data['id'] as int,
         originalLanguage: data['original_language'] as String,
         originalTitle: data['original_title'] as String,
@@ -78,7 +77,7 @@ class PopularMovies {
         'vote_count': voteCount,
       };
 
-  PopularMovies copyWith({
+  Movies copyWith({
     bool? adult,
     String? backdropPath,
     List<int>? genreIds,
@@ -94,7 +93,7 @@ class PopularMovies {
     double? voteAverage,
     int? voteCount,
   }) {
-    return PopularMovies(
+    return Movies(
       adult: adult ?? this.adult,
       backdropPath: backdropPath ?? this.backdropPath,
       genreIds: genreIds ?? this.genreIds,
@@ -115,7 +114,7 @@ class PopularMovies {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! PopularMovies) return false;
+    if (other is! Movies) return false;
     final mapEquals = const DeepCollectionEquality().equals;
     return mapEquals(other.toJson(), toJson());
   }

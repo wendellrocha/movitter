@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 
 import '../../domain/entities/result_popular_movies.dart';
 import '../../infra/datasources/popular_movies_datasource.dart';
-import '../../infra/models/popular_movies_model.dart';
+import '../../infra/models/result_popular_movies_model.dart';
 
 class TMDBDatasource implements IPopularMoviesDatasource {
   final IHttpClientAdapter _client;

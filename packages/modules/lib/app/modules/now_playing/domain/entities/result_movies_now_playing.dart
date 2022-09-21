@@ -1,14 +1,14 @@
 import 'package:common/common.dart';
 
-class ResultPopularMovies {
+class ResultMoviesNowPlaying {
   final int page;
-  final List<Movies> popularMovies;
+  final List<Movies> moviesNowPlaying;
   final int totalPages;
   final int totalResults;
 
-  const ResultPopularMovies({
+  const ResultMoviesNowPlaying({
     this.page = 1,
-    this.popularMovies = const [],
+    this.moviesNowPlaying = const [],
     this.totalPages = 1,
     this.totalResults = 1,
   });

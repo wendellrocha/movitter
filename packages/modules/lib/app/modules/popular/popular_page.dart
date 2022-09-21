@@ -9,7 +9,7 @@ import 'popular_store.dart';
 
 class PopularPage extends StatefulWidget {
   final String title;
-  const PopularPage({Key? key, this.title = 'PopularPage'}) : super(key: key);
+  const PopularPage({Key? key, this.title = 'Popular'}) : super(key: key);
   @override
   PopularPageState createState() => PopularPageState();
 }

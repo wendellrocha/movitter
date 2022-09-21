@@ -5,7 +5,7 @@ import 'upcoming_store.dart';
 
 class UpcomingPage extends StatefulWidget {
   final String title;
-  const UpcomingPage({Key? key, this.title = 'UpcomingPage'}) : super(key: key);
+  const UpcomingPage({Key? key, this.title = 'Upcoming'}) : super(key: key);
   @override
   UpcomingPageState createState() => UpcomingPageState();
 }

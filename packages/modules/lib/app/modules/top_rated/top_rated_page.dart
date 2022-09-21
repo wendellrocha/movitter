@@ -5,7 +5,7 @@ import 'top_rated_store.dart';
 
 class TopRatedPage extends StatefulWidget {
   final String title;
-  const TopRatedPage({Key? key, this.title = 'TopRatedPage'}) : super(key: key);
+  const TopRatedPage({Key? key, this.title = 'Top Rated'}) : super(key: key);
   @override
   TopRatedPageState createState() => TopRatedPageState();
 }
