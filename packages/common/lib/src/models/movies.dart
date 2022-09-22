@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:dependencies/dependencies.dart';
 
 class Movies {
   final bool adult;
@@ -53,7 +54,8 @@ class Movies {
         overview: data['overview'] as String,
         popularity: (data['popularity'] as num).toDouble(),
         posterPath: data['poster_path'] as String?,
-        releaseDate: data['release_date'] as String,
+        releaseDate: DateFormat('d LLL yyyy')
+            .format(DateTime.parse(data['release_date'] as String)),
         title: data['title'] as String,
         video: data['video'] as bool,
         voteAverage: (data['vote_average'] as num).toDouble(),

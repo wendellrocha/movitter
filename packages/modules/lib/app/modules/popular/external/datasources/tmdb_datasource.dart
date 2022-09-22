@@ -12,8 +12,8 @@ class TMDBDatasource implements IPopularMoviesDatasource {
   @override
   Future<ResultPopularMovies> getPopularMovies({int page = 1}) async {
     final response = await _client.get(
-      'movie/popular$kApiKey$kLanguage$kPagination'
-          .replaceAll('{{page}}', '$page'),
+      'movie/popular$kPagination'.replaceAll('{{page}}', '$page'),
+      queryParams: kQueryParams,
     );
 
     return response.fold(

@@ -26,9 +26,7 @@ class TrendingMoviesRepositoryImpl implements ITrendingMoviesRepository {
           message: e.message!,
         ),
       );
-    } catch (e, stacktrace) {
-      print(e);
-      print(stacktrace);
+    } catch (e) {
       return Left(TrendingMoviesDatasourceError(message: e.toString()));
     }
   }

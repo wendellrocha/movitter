@@ -34,9 +34,13 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
         color: Theme.of(context).backgroundColor,
         notchMargin: 5,
         child: SafeArea(
-          minimum: const EdgeInsets.only(top: 10),
+          minimum: Theme.of(context).platform == TargetPlatform.android
+              ? EdgeInsets.zero
+              : const EdgeInsets.only(top: 10),
           child: SizedBox(
-            height: kBottomBarHeight,
+            height: Theme.of(context).platform == TargetPlatform.android
+                ? kBottomBarHeight
+                : kBottomBarHeightCupertino,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
