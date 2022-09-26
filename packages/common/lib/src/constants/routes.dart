@@ -6,3 +6,4 @@ const Map<String, String> kQueryParams = {
   'api_key': Env.apiKey,
   'language': 'pt-BR',
 };
+const String kAssetsBaseUrl = 'https://image.tmdb.org/t/p';

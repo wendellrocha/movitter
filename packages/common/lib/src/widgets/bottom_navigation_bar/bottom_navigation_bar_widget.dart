@@ -26,7 +26,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: kBottomBarHeight,
+      height: Theme.of(context).platform == TargetPlatform.android
+          ? kBottomBarHeight
+          : kBottomBarHeightCupertino,
       child: BottomAppBar(
         elevation: 4,
         shape: const CircularNotchedRectangle(),
@@ -61,7 +63,9 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
       items.add(
         Expanded(
           child: SizedBox(
-            height: kBottomBarHeight,
+            height: Theme.of(context).platform == TargetPlatform.android
+                ? kBottomBarHeight
+                : kBottomBarHeightCupertino,
             child: Material(
               color: Colors.transparent,
               child: InkWell(

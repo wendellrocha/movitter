@@ -12,7 +12,7 @@ class TMDBDatasource implements ITrendingMoviesDatasource {
   @override
   Future<ResultTrendingMovies> getTrendingMovies({int page = 1}) async {
     final response = await _client.get(
-      'trending/movie/week$kPagination'.replaceAll('{{page}}', '$page'),
+      'trending/movie/week${kPagination.replaceAll('{{page}}', '$page')}',
       queryParams: kQueryParams,
     );
 

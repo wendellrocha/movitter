@@ -36,10 +36,12 @@ class PopularPageState extends State<PopularPage> {
         onError: (context, error) => Center(
           child: Text(error!.message),
         ),
-        onState: (context, state) => ListView.builder(
+        onState: (context, state) => GridView.builder(
+          padding: Utils.gridPadding,
+          gridDelegate: Utils.gridDelegate,
           itemCount: state.popularMovies.length,
-          itemBuilder: (_, i) => Text(
-            state.popularMovies[i].title,
+          itemBuilder: (_, i) => MovieItemWidget(
+            item: state.popularMovies[i],
           ),
         ),
       ),

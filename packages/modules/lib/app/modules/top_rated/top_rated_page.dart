@@ -36,10 +36,12 @@ class TopRatedPageState extends State<TopRatedPage> {
         onError: (context, error) => Center(
           child: Text(error!.message),
         ),
-        onState: (context, state) => ListView.builder(
+        onState: (context, state) => GridView.builder(
+          padding: Utils.gridPadding,
+          gridDelegate: Utils.gridDelegate,
           itemCount: state.topRatedMovies.length,
-          itemBuilder: (_, i) => Text(
-            state.topRatedMovies[i].title,
+          itemBuilder: (_, i) => MovieItemWidget(
+            item: state.topRatedMovies[i],
           ),
         ),
       ),

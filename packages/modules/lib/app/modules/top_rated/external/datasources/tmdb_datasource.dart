@@ -12,7 +12,7 @@ class TMDBDatasource implements ITopRatedMoviesDatasource {
   @override
   Future<ResultTopRatedMovies> getTopRatedMovies({int page = 1}) async {
     final response = await _client.get(
-      '/movie/top_rated$kPagination'.replaceAll('{{page}}', '$page'),
+      '/movie/top_rated${kPagination.replaceAll('{{page}}', '$page')}',
       queryParams: kQueryParams,
     );
 

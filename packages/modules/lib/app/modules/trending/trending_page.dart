@@ -37,10 +37,12 @@ class TrendingPageState extends State<TrendingPage> {
         onError: (context, error) => Center(
           child: Text(error!.message),
         ),
-        onState: (context, state) => ListView.builder(
+        onState: (context, state) => GridView.builder(
+          padding: Utils.gridPadding,
+          gridDelegate: Utils.gridDelegate,
           itemCount: state.trendingMovies.length,
-          itemBuilder: (_, i) => Text(
-            state.trendingMovies[i].title,
+          itemBuilder: (_, i) => MovieItemWidget(
+            item: state.trendingMovies[i],
           ),
         ),
       ),

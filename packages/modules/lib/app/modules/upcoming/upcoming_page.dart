@@ -1,6 +1,10 @@
+import 'package:common/common.dart';
+import 'package:dependencies/dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
+import 'domain/entities/result_upcoming_movies.dart';
+import 'domain/errors/errors.dart';
+import 'upcoming_controller.dart';
 import 'upcoming_store.dart';
 
 class UpcomingPage extends StatefulWidget {
@@ -11,16 +15,35 @@ class UpcomingPage extends StatefulWidget {
 }
 
 class UpcomingPageState extends State<UpcomingPage> {
-  final UpcomingStore store = Modular.get();
+  final UpcomingController controller = Modular.get();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.getUpcomingMovies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: const <Widget>[],
+      appBar: DefaultAppBarWidget(title: widget.title),
+      body: ScopedBuilder<UpcomingStore, FailureUpcomingMovies,
+          ResultUpcomingMovies>(
+        store: controller.store,
+        onLoading: (context) => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
+        onError: (context, error) => Center(
+          child: Text(error!.message),
+        ),
+        onState: (context, state) => GridView.builder(
+          padding: Utils.gridPadding,
+          gridDelegate: Utils.gridDelegate,
+          itemCount: state.upcomingMovies.length,
+          itemBuilder: (_, i) => MovieItemWidget(
+            item: state.upcomingMovies[i],
+          ),
+        ),
       ),
     );
   }

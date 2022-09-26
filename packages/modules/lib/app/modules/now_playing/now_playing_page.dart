@@ -38,10 +38,12 @@ class NowPlayingPageState extends State<NowPlayingPage> {
         onError: (context, error) => Center(
           child: Text(error!.message),
         ),
-        onState: (context, state) => ListView.builder(
+        onState: (context, state) => GridView.builder(
+          padding: Utils.gridPadding,
+          gridDelegate: Utils.gridDelegate,
           itemCount: state.moviesNowPlaying.length,
-          itemBuilder: (_, i) => Text(
-            state.moviesNowPlaying[i].title,
+          itemBuilder: (_, i) => MovieItemWidget(
+            item: state.moviesNowPlaying[i],
           ),
         ),
       ),

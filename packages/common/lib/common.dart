@@ -19,6 +19,7 @@ export 'src/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 export 'src/widgets/default_app_bar/default_app_bar_widget.dart';
 export 'src/widgets/floating_action_button/floating_action_button_widget.dart';
 export 'src/widgets/list_tile/list_tile_widget.dart';
+export 'src/widgets/movie_item/movie_item_widget.dart';
 export 'src/widgets/no_content/no_content_widget.dart';
 export 'src/widgets/options_modal/options_modal_widget.dart';
 export 'src/widgets/profile_avatar/profile_avatar_widget.dart';
